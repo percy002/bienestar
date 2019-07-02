@@ -1,0 +1,25 @@
+@import "variables";
+
+/* *******navbar**** */
+
+.con-header{
+    width: 103%;
+    border-bottom: 1em solid $color-primario;
+    margin-bottom: 1em;
+    margin-left: -0.7vw;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    a{
+        text-decoration: none;
+        color: black;
+        transition: 0.3s;
+        &:hover{
+            background-color:$hover-color;
+            border-radius: 12px / 50%;
+            padding: 0 0.5em;
+        }
+    }
+}
+

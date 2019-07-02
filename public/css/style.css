@@ -1,0 +1,255 @@
+.layau {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 3rem 1fr;
+  background: green;
+}
+
+.buton-opciones-4, .buton-opciones-3, .buton-opciones-2, .buton-opciones-1 {
+  padding: 0 0rem;
+  width: 35%;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  text-align: start;
+  color: white;
+}
+.buton-opciones-4 h1, .buton-opciones-3 h1, .buton-opciones-2 h1, .buton-opciones-1 h1 {
+  padding: 2px 0;
+  margin: 0;
+}
+.buton-opciones-4::after, .buton-opciones-3::after, .buton-opciones-2::after, .buton-opciones-1::after {
+  content: "ver mas..." url();
+  background-color: #b35900;
+  padding: 0;
+  display: block;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* *******navbar**** */
+.con-header {
+  width: 103%;
+  border-bottom: 1em solid #004074;
+  margin-bottom: 1em;
+  margin-left: -0.7vw;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+.nav a {
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+}
+.nav a:hover {
+  background-color: #59a0db;
+  border-radius: 12px/50%;
+  padding: 0 0.5em;
+}
+
+p {
+  font-family: sans-serif;
+}
+
+.logo-gif {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.3em;
+}
+
+.container {
+  margin-top: 1em;
+}
+
+/* *********************aside************* */
+.aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #144f80;
+  height: 100vh;
+}
+.aside .aside-item {
+  display: inline-block;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 5em;
+}
+.aside .aside-item .item {
+  margin: 0.6em 0;
+}
+.aside .aside-item a {
+  text-decoration: none;
+  color: white;
+  padding: 0 1em;
+  transition: 0.3s;
+}
+.aside .aside-item a:hover {
+  background-color: #59a0db;
+  border-radius: 12px/50%;
+  padding: 0 1em;
+}
+.aside .form-label {
+  color: white;
+}
+
+/***************************** main************************************ */
+.main {
+  border: 1px solid red;
+}
+.main .main-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3px;
+  font-family: "Oswald";
+  color: #75c1ff;
+}
+.main .main-img {
+  width: 100%;
+  height: auto;
+}
+
+/* cambis de boostrap */
+.main-header {
+  display: flex;
+  grid-column: 1/span 2;
+  background: #00ccff;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-header h1, .main-header h2 {
+  font-size: 1.2em;
+  color: white;
+  margin-left: 4rem;
+  align-items: center;
+}
+.main-header h2 {
+  margin-right: 3rem;
+}
+
+.main-aside {
+  grid-column: 1/span 1;
+  background: #33ccb3;
+}
+
+.nav-aside {
+  list-style: none;
+  padding: 0;
+  margin: 0 1rem;
+}
+
+.nav-subaside {
+  display: none;
+}
+
+.nav-aside-item {
+  margin: 1rem;
+  padding: 1rem;
+  background: #ececec;
+  transition: display 3s;
+}
+.nav-aside-item:hover .nav-subaside {
+  display: block;
+  z-index: 3;
+}
+
+.main-body {
+  grid-column: 2/span 1;
+  background: #ececec;
+}
+
+.body-item {
+  display: grid;
+  grid-template-rows: 3rem 3rem 1fr;
+}
+
+.body-item-1 {
+  display: flex;
+  justify-content: space-between;
+}
+.body-item-1 h1 {
+  margin-left: 4rem;
+  font-size: 2em;
+}
+.body-item-1 .form-inline {
+  margin-left: 2rem;
+}
+
+.body-item-2 {
+  justify-items: end;
+}
+
+.col-form-label {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.main-datos {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(auto-fit, 2rem);
+  margin-left: 1rem;
+}
+
+.buton-opciones-1 {
+  background-color: #cc7700;
+}
+.buton-opciones-1:focus {
+  background-color: #ff9500;
+}
+.buton-opciones-1::after {
+  background-color: #b35900;
+}
+
+.buton-opciones-2 {
+  background-color: #00a7cc;
+}
+.buton-opciones-2:focus {
+  background-color: #00d0ff;
+}
+.buton-opciones-2::after {
+  background-color: #009bb3;
+}
+
+.buton-opciones-3 {
+  background-color: #573399;
+}
+.buton-opciones-3:focus {
+  background-color: #6c40bf;
+}
+.buton-opciones-3::after {
+  background-color: #652d86;
+}
+
+.buton-opciones-4 {
+  background-color: #1fad42;
+}
+.buton-opciones-4:focus {
+  background-color: #26d953;
+}
+.buton-opciones-4::after {
+  background-color: #1b9834;
+}
+
+.buton-bienestar-economico {
+  padding: 0.5rem 1rem;
+  width: 35%;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #cc7700;
+}
+.buton-bienestar-economico:focus {
+  background-color: #ff9500;
+}
+
+/*# sourceMappingURL=style.css.map */

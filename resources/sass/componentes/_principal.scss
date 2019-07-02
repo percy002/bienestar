@@ -1,0 +1,74 @@
+@import "variables";
+
+p{
+    font-family: sans-serif;
+}
+
+.logo-gif{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.3em;
+
+}
+
+.container{
+    margin-top: 1em;
+}
+/* *********************aside************* */
+.aside{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-segundario;
+    height: 100vh;
+
+    .aside-item{
+        display: inline-block;
+         list-style: none;
+         padding-left: 0;
+         margin-top: 5em;
+         
+         .item{
+             margin: 0.6em 0;
+         }
+ 
+         a{
+             text-decoration: none;
+             color:white;
+             padding: 0 1em;
+             transition: 0.3s;
+             &:hover{
+                 background-color:$hover-color;
+                 border-radius: 12px / 50%;
+                 padding: 0 1em;
+             }
+         }
+    }
+
+    .form-label{
+        color: white;
+    }
+}
+
+
+/***************************** main************************************ */
+.main{
+    border: 1px solid red;
+    
+    .main-title{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3px;
+        font-family: 'Oswald';
+        color: $color-titulo;
+    }
+
+
+    .main-img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/* cambis de boostrap */

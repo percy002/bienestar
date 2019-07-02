@@ -1,0 +1,21 @@
+%botton-opciones{
+    padding: 0 0rem;
+    width: 35%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    text-align: start;
+    color: white;
+    h1{
+        padding: 2px 0;
+        margin: 0;
+    }
+    &::after{
+        content: "ver mas..." url();
+        background-color:hsl(30, 100, 35);
+        padding: 0 ;
+        display: block;
+        text-align: center;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}

@@ -1,0 +1,62 @@
+.main-datos{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: repeat(auto-fit,2rem);
+    margin-left: 1rem;
+
+}
+.buton-opciones-1{
+    @extend %botton-opciones;
+    background-color: hsl(35, 100, 40);
+    &:focus{
+        background-color: hsl(35, 100, 50);
+    }
+   &::after{
+       background-color:hsl(30, 100, 35);
+   }
+}
+.buton-opciones-2{
+    @extend %botton-opciones;
+    background-color: hsl(191, 100, 40);
+    &:focus{
+        background-color: hsl(191, 100, 50);
+    }
+    &::after{
+        background-color: hsl(188, 100, 35);
+    }
+}
+.buton-opciones-3{
+    @extend %botton-opciones;
+    background-color: hsl(261, 50, 40);
+    &:focus{
+        background-color: hsl(261, 50, 50);
+    }
+    &::after{
+        background-color: hsl(278, 50, 35);
+    }
+}
+.buton-opciones-4{
+    @extend %botton-opciones;
+    background-color: hsl(135, 70, 40);
+    &:focus{
+        background-color: hsl(135, 70, 50);
+    }
+
+    &::after{
+        background-color: hsl(132, 70, 35);
+    }
+}
+.buton-bienestar-economico{
+
+    padding: 0.5rem 1rem;
+    width: 35%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    text-align: center;
+    
+    background-color: hsl(35, 100, 40);
+    &:focus{
+        background-color: hsl(35, 100, 50);
+    }
+
+}
