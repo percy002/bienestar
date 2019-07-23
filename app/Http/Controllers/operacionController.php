@@ -3,9 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Entities\Alumno;
 
 class operacionController extends Controller
 {
+    public function prorroga($id)
+    {
+        $alumno= Alumno::find($id);
+        $action = route('bienestar.store');
+        return view('operacion.prorroga')->with(compact('action','alumno'));
+    }
+    public function reincorporacion($id)
+    {
+        $alumno= Alumno::find($id);
+        $action = route('bienestar.store');
+        return view('operacion.reincorporacion')->with(compact('action','alumno'));
+    }
+    public function becas($id)
+    {
+        $alumno= Alumno::find($id);
+        $action = route('bienestar.store');
+        return view('operacion.becas')->with(compact('action','alumno '));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +33,8 @@ class operacionController extends Controller
     public function index()
     {
         //
+        //$alumno= Alumno::find($id);
+        return view('operacion.index');
     }
 
     /**
@@ -21,10 +42,14 @@ class operacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+        $alumno= Alumno::find($id);
+        $action = route('bienestar.store');
+        return view('operacion.becas')->with(compact('action','alumno'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -35,6 +60,9 @@ class operacionController extends Controller
     public function store(Request $request)
     {
         //
+        $alumnos= new alumno($request->input());
+        $alumnos->save();
+        return redirect()->route('operacion.index');
     }
 
     /**
@@ -46,6 +74,8 @@ class operacionController extends Controller
     public function show($id)
     {
         //
+        $alumno= Alumno::find($id);
+        return view('operacion.index')->with(compact('alumno'));
     }
 
     /**

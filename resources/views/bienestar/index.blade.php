@@ -34,9 +34,10 @@
                             <td>{{$alumno->nombre}}</td>
                             <td>{{$alumno->carrera->NombreCarrera}}</td>
                             <td class="d-flex justify-content-end">
-                                <button type="button " class="btn btn-warning "><span class="icon-pencil"></span></button>
+                                
+                                <button type="button " class="btn btn-warning " onclick="location.href='{{route('bienestar.edit',['id'=>$alumno->idAlumno])}}'" href="{{route('bienestar.edit',['id'=>$alumno->idAlumno])}}"><span class="icon-pencil"></span></button>
                                 <button type="button" class="btn btn-danger mx-2"><span class="icon-bin"></span></button>
-                                <button type="button " class="btn  btn-success ">Operacion</button>
+                                <button type="button " class="btn  btn-success " onclick="location.href='{{route('operacion.show',['id'=>$alumno->idAlumno])}}'">Operacion</button>
                             </td>
                             </tr> 
                         @endforeach  

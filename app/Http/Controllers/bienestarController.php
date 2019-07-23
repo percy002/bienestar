@@ -71,6 +71,12 @@ class bienestarController extends Controller
     public function edit($id)
     {
         //
+        $alumno = Alumno::find($id);
+        $carreras=CarreraProfesional::all();
+        $put=true;
+        $action=route('bienestar.update',['id'=>$id]);
+
+        return view('bienestar.actualizar')->with(compact('alumno','action','carreras','put'));
     }
 
     /**
@@ -83,6 +89,19 @@ class bienestarController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $alumno=Alumno::find($id);
+        $alumno->dni=$request->input('dni');
+        $alumno->nombre=$request->input('nombre');
+        $alumno->paterno=$request->input('paterno');
+        $alumno->materno=$request->input('materno');
+        $alumno->genero=$request->input('genero');
+        $alumno->telefono=$request->input('telefono');
+        $alumno->direccion=$request->input('direccion');
+        $alumno->correo=$request->input('correo');
+        $alumno->idCarreraProfesional=$request->input('idCarreraProfesional');
+        $alumno->fechaNacimiento=$request->input('fechaNacimiento');
+        $alumno->save();
+        return redirect()->route('bienestar.index');
     }
 
     /**
