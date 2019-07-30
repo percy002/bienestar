@@ -34,7 +34,15 @@
             <div><label for="">{{$alumno->dni}}</label></div>
         </div>
         <!-- solo cambiar esta parte -->
-        
+        <div class="d-flex justify-content-center">
+            <h1 class="mt-4">Bienestar Economico</h1>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            
+                <button type="button" class="mx-1 ml-3   buton-bienestar-economico" onclick="location.href='{{route('becas',['id'=>$alumno->idAlumno])}}'">Beca-Integral   Medias-Becas y Descuentos</button>
+                <button type="button" class="mx-1        buton-bienestar-economico" onclick="location.href='{{route('prorroga',['id'=>$alumno->idAlumno])}}'">Proroga de pagos</button>
+                <button type="button" class="mx-1 mr-3   buton-bienestar-economico" onclick="location.href='{{route('reincorporacion',['id'=>$alumno->idAlumno])}}'">Programa de Reincorporacion</button>
+        </div>
          <!-- en la opcion bienestarv economico solo cambia esta parate el resto es = -->
 
          @yield('operacion')

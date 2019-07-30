@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Entities\CarreraProfesional;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,8 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'dni' => ['required','string','max:8'],
+            'nombre' => ['required', 'string', 'max:25'],
+            'paterno' => ['required','string','max:25'],
+            'materno' => ['required','string','max:25'],
+            'telefono' => ['required','string','max:15'],
+            'direccion' => ['required','string','max:45'],
+            'fechaNacimiento' => ['required','date','date_format:Y-m-d'],
+            'genero' => ['required','string','max:2'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,9 +72,21 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'dni' => $data['dni'],
+            'nombre' => $data['nombre'],
+            'paterno' => $data['paterno'],
+            'materno' => $data['materno'],
+            'telefono' => $data['telefono'],
+            'direccion' => $data['direccion'],
+            'fechaNacimiento' => $data['fechaNacimiento'],
+            'genero' => $data['genero'],
+            'correo' => $data['correo'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function showRegistrationForm()
+    {
+        $carreras=CarreraProfesional::all();
+        return view('auth.register')->with(compact('carreras'));
     }
 }

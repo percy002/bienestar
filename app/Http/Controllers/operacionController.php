@@ -7,6 +7,11 @@ use App\Entities\{Alumno,Operacion};
 
 class operacionController extends Controller
 {
+    public function economico($id)
+    {
+        $alumno= Alumno::find($id);
+        return view('operacion.economico')->with(compact('alumno'));
+    }
     public function prorroga($id)
     {
         $alumno= Alumno::find($id);
@@ -24,6 +29,24 @@ class operacionController extends Controller
         $alumno= Alumno::find($id);
         $action = route('operacion.store');
         return view('operacion.becas')->with(compact('action','alumno'));
+    }
+    public function psicologico($id)
+    {
+        $alumno= Alumno::find($id);
+        $action = route('operacion.store');
+        return view('operacion.psicologico')->with(compact('action','alumno'));
+    }
+    public function tutoriaConsejeria($id)
+    {
+        $alumno= Alumno::find($id);
+        $action = route('operacion.store');
+        return view('operacion.tutoriaConsejeria')->with(compact('action','alumno'));
+    }
+    public function medico($id)
+    {
+        $alumno= Alumno::find($id);
+        $action = route('operacion.store');
+        return view('operacion.tutoriaConsejeria')->with(compact('action','alumno'));
     }
     /**
      * Display a listing of the resource.
@@ -76,7 +99,7 @@ class operacionController extends Controller
     {
         //
         $alumno= Alumno::find($id);
-        return view('operacion.index')->with(compact('alumno'));
+        return view('operacion.opciones')->with(compact('alumno'));
     }
 
     /**

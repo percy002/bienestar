@@ -11,6 +11,6 @@ class operacion extends Model
     protected $primaryKey = 'idOperacionAlumno';
     //
     //datos que puede almacenar el usuario
-    protected $fillable=['fechaInicio','fechaFin','idOperacionBienestar','idAlumno','observaciones'];
+    protected $fillable=['fechaInicio','fechaFin','idOperacionBienestar','diagnostico','idAlumno','observaciones'];
 
 }
