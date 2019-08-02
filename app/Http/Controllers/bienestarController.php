@@ -48,8 +48,8 @@ class bienestarController extends Controller
         //
 
          //validacion a travez de una lista
-         list($rules,$messages)=$this->_rules();
-         $this->validate($request,$rules,$messages);
+         /* list($rules,$messages)=$this->_rules();
+         $this->validate($request,$rules,$messages); */
 
 
         $alumnos= new alumno($request->input());
@@ -126,57 +126,57 @@ class bienestarController extends Controller
         $messages=[
             'dni.required' => 'el dni es requerido',
             'dni.Integer'=> 'solo numero enteros',
-            'dni.min'=> 'minimo 8 caracteres',
-            'dni.max'=> 'maximo 8 caracteres',
+            'dni.min'=> 'minimo 8 caracteres del dni',
+            'dni.max'=> 'maximo 8 caracteres del dni',
 
             'nombre.required' => 'el nombre es requerido',
             'nombre.alpha' => 'el tiene que ser caracteres alfabéticos',
-            'nombre.max' => 'maximo 25 caracteres',
+            'nombre.max' => 'maximo 25 caracteres en nombre',
 
             'paterno.required' => 'el apellido paterno es requerido',
             'paterno.alpha' => 'el el tiene que ser caracteres alfabéticos',
-            'paterno.max' => 'maximo 25 caracteres',
+            'paterno.max' => 'maximo 25 caracteres en apellido patrno',
 
             'materno.required' => 'el apellido materno es requerido',
             'materno.alpha' => 'el tiene que ser caracteres alfabéticos',
-            'materno.max' => 'maximo 25 caracteres',
+            'materno.max' => 'maximo 25 caracteres en apellido materno',
 
             'telefono.required' => 'el telefono es requerido',
             'telefono.Integer' => 'solo numero enteros',
-            'telefono.min' => 'minimo 8 caracteres',
-            'telefono.max' => 'maximo 9 caracteres',
+            'telefono.min' => 'minimo 8 caracteres en telefono',
+            'telefono.max' => 'maximo 9 caracteres en telefono',
 
             'direccion.required' => 'la direccion es requerida',
-            'direccion.max' => 'maximo 45 caracteres',
+            'direccion.max' => 'maximo 45 caracteres en espacion direccion',
 
             'fechaNacimiento.required' => 'fecha de Nacimiento es requerida',
-            'fechaNacimiento.date' => 'date',
+            'fechaNacimiento.date' => 'completar  Fecha valida de nacimiento',
 
             'genero.required' => 'el genero es requerida',
-            'genero.max' => 'maximo 2 caracteres',
+            'genero.max' => 'maximo 2 caracteres en genero',
 
             'correo.required' => 'el correo es requerida',
-            'correo.E-Mail' => 'el genero es requerida',
-            'correo.max' => 'maximo 45 caracteres',
+            'correo.E-Mail' => 'Correo invalido',
+            'correo.max' => 'maximo 45 caracteres correo',
 
-            'idCarreraProfeciona.required' => 'el Id de carrera profecional es requerido es requerido',
-            'idCarreraProfeciona.Integer' => 'solo numero enteros',
-            'idCarreraProfeciona.min' => 'minimo 11 caracteres',
-            'idCarreraProfeciona.digits_between' => 'el numero requerido deve estar entre el 1 y 20',
+          /*   'idCarreraProfecional.required' => 'el Id de carrera profecional es requerido es requerido',
+            'idCarreraProfecional.Integer' => 'solo numero enteros',
+            'idCarreraProfecional.min' => 'minimo 11 caracteres ',
+            'idCarreraProfecional.digits_between' => 'el numero requerido deve estar entre el 1 y 20', */
             
 
         ];
         $rules =[
-            'dni' => 'required|Integer|min:8|max:8',
+            'dni' => 'required|Integer|min:10000000|max:99999999',
             'nombre' => 'required|alpha|max:25',
             'paterno' => 'required|alpha|max:25',
             'materno' => 'required|alpha|max:25',
-            'telefono' => 'required|Integer|min:8|max:9',
+            'telefono' => 'required|Integer|min:10000|max:99999999',
             'direccion' => 'required|max:45',
             'fechaNacimiento' => 'required|date',
             'genero' => 'required|max:2',
             'correo' => 'required|E-Mail|max:45',
-            'idCarreraProfeciona' => 'required|integer|max:11|digits_between:1,20|'
+            /* 'idCarreraProfecional' => 'required|integer|max:11|digits_between:1,20|' */
         ];
 
         return array($rules,$messages);
