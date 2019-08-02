@@ -126,13 +126,8 @@ class bienestarController extends Controller
         $messages=[
             'dni.required' => 'el dni es requerido',
             'dni.Integer'=> 'solo numero enteros',
-<<<<<<< HEAD
-            'dni.min'=> 'minimo 8 caracteres del dni',
-            'dni.max'=> 'maximo 8 caracteres del dni',
-=======
             'dni.min'=> 'minimo 8 caracteres',
             'dni.max'=> 'maximo 9 caracteres',
->>>>>>> fb75afbf6537eacf88106dc44cedcdd7873f2e1a
 
             'nombre.required' => 'el nombre es requerido',
             'nombre.alpha' => 'el tiene que ser caracteres alfabéticos',
@@ -164,43 +159,24 @@ class bienestarController extends Controller
             'correo.E-Mail' => 'Correo invalido',
             'correo.max' => 'maximo 45 caracteres correo',
 
-<<<<<<< HEAD
-          /*   'idCarreraProfecional.required' => 'el Id de carrera profecional es requerido es requerido',
-            'idCarreraProfecional.Integer' => 'solo numero enteros',
-            'idCarreraProfecional.min' => 'minimo 11 caracteres ',
-            'idCarreraProfecional.digits_between' => 'el numero requerido deve estar entre el 1 y 20', */
-=======
             // 'idCarreraProfecional.required' => 'el Id de carrera profecional es requerido es requerido',
             // 'idCarreraProfecional.Integer' => 'solo numero enteros',
             // 'idCarreraProfecional.min' => 'minimo 11 caracteres',
             // 'idCarreraProfecional.digits_between' => 'el numero requerido deve estar entre el 1 y 20',
->>>>>>> fb75afbf6537eacf88106dc44cedcdd7873f2e1a
             
 
         ];
         $rules =[
-<<<<<<< HEAD
-            'dni' => 'required|Integer|min:10000000|max:99999999',
-            'nombre' => 'required|alpha|max:25',
-            'paterno' => 'required|alpha|max:25',
-            'materno' => 'required|alpha|max:25',
-            'telefono' => 'required|Integer|min:10000|max:99999999',
-=======
             'dni' => 'required|numeric|min:10000000|max:99999999',
             'nombre' => 'required|alpha|max:25',
             'paterno' => 'required|alpha|max:25',
             'materno' => 'required|alpha|max:25',
             'telefono' => 'required|Integer|min:10000|max:999999999',
->>>>>>> fb75afbf6537eacf88106dc44cedcdd7873f2e1a
             'direccion' => 'required|max:45',
             'fechaNacimiento' => 'required|date',
             'genero' => 'required|max:2',
             'correo' => 'required|E-Mail|max:45',
-<<<<<<< HEAD
-            /* 'idCarreraProfecional' => 'required|integer|max:11|digits_between:1,20|' */
-=======
             // 'idCarreraProfecional' => 'required|integer|max:11|digits_between:1,20|',
->>>>>>> fb75afbf6537eacf88106dc44cedcdd7873f2e1a
         ];
 
         return array($rules,$messages);
