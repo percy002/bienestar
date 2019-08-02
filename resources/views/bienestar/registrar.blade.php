@@ -7,6 +7,14 @@
 <h1 class="d-flex justify-content-center">Registro de estudiante</h1>
 <form action="{{$action}}" method="POST" class="mt-5">
     {{ csrf_field() }}
+    <div class="alert alert-danger">
+        <p><strong>oops</strong></p>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
     <div class="form-group row ">
         <label  class="col-sm-4 pl-5 col-form-label">DNI</label>
         <div class="col-sm-4  ">
