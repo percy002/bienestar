@@ -127,7 +127,7 @@ class bienestarController extends Controller
             'dni.required' => 'el dni es requerido',
             'dni.Integer'=> 'solo numero enteros',
             'dni.min'=> 'minimo 8 caracteres',
-            'dni.max'=> 'maximo 8 caracteres',
+            'dni.max'=> 'maximo 9 caracteres',
 
             'nombre.required' => 'el nombre es requerido',
             'nombre.alpha' => 'el tiene que ser caracteres alfabéticos',
@@ -159,24 +159,24 @@ class bienestarController extends Controller
             'correo.E-Mail' => 'el genero es requerida',
             'correo.max' => 'maximo 45 caracteres',
 
-            'idCarreraProfeciona.required' => 'el Id de carrera profecional es requerido es requerido',
-            'idCarreraProfeciona.Integer' => 'solo numero enteros',
-            'idCarreraProfeciona.min' => 'minimo 11 caracteres',
-            'idCarreraProfeciona.digits_between' => 'el numero requerido deve estar entre el 1 y 20',
+            // 'idCarreraProfecional.required' => 'el Id de carrera profecional es requerido es requerido',
+            // 'idCarreraProfecional.Integer' => 'solo numero enteros',
+            // 'idCarreraProfecional.min' => 'minimo 11 caracteres',
+            // 'idCarreraProfecional.digits_between' => 'el numero requerido deve estar entre el 1 y 20',
             
 
         ];
         $rules =[
-            'dni' => 'required|Integer|min:8|max:8',
+            'dni' => 'required|numeric|min:10000000|max:99999999',
             'nombre' => 'required|alpha|max:25',
             'paterno' => 'required|alpha|max:25',
             'materno' => 'required|alpha|max:25',
-            'telefono' => 'required|Integer|min:8|max:9',
+            'telefono' => 'required|Integer|min:10000|max:999999999',
             'direccion' => 'required|max:45',
             'fechaNacimiento' => 'required|date',
             'genero' => 'required|max:2',
             'correo' => 'required|E-Mail|max:45',
-            'idCarreraProfeciona' => 'required|integer|max:11|digits_between:1,20|'
+            // 'idCarreraProfecional' => 'required|integer|max:11|digits_between:1,20|',
         ];
 
         return array($rules,$messages);

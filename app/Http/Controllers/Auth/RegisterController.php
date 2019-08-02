@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Entities\Administrador;
+use App\Entities\User;
 use App\Entities\CarreraProfesional;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
