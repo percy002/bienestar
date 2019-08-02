@@ -21,7 +21,7 @@ class CreateAdminsTable extends Migration
             $table->string('materno',25);
             $table->string('telefono',15);
             $table->string('direccion',45);
-            $table->date('fechaNacimiento',15);
+            $table->date('birthdate')->format('d.m.Y');
             $table->string('genero',2);
             $table->string('correo')->unique();
             $table->timestamp('email_verified_at')->nullable();
