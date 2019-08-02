@@ -78,7 +78,7 @@
                                 <option value="0">selecciona</option>
                                 @if (!empty($carreras))
                                     @foreach ($carreras as $c)
-                                        <option value="{{$c->idCarreraProfesional}}" {{$c->idCarreraProfesional ===$alumnos->idCarreraProfesional ? 'select' : ''}}>{{$c->NombreCarrera}}</option>
+                                        <option value="{{$c->idCarreraProfesional}}" {{$c->idCarreraProfesional ===$alumnos->idCarreraProfesional ? 'select' : ''}}>{{$c->nombreCarrera}}</option>
                                     @endforeach
                                 @endif
                             </select>

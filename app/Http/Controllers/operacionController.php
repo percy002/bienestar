@@ -135,4 +135,23 @@ class operacionController extends Controller
     {
         //
     }
+
+     #reglas de validacion
+     private function _rules(){
+        $messages=[
+            'fecha.required' => 'fecha es requerida',
+            'fecha.date' => 'date',
+
+            'observaciones.required' => 'las observaciones son requeridas',
+          
+
+        ];
+        $rules =[
+            'fecha' => 'required|date',
+            'observaciones' => 'required',
+        ];
+
+        return array($rules,$messages);
+    }
+
 }
