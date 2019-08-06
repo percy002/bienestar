@@ -129,7 +129,7 @@ class bienestarController extends Controller
      private function _rules(){
         $messages=[
             'dni.required' => 'el dni es requerido',
-            'dni.numeric'=> 'solo numero enteros',
+            'dni.Integer'=> 'solo numero enteros',
             'dni.min'=> 'minimo 8 caracteres',
             'dni.max'=> 'maximo 9 caracteres',
 
