@@ -61,7 +61,12 @@
         </div>
         <div class="d-flex justify-content-end  pt-4">
                 <button type="submit" class="btn btn-primary mx-5">Guardar</button>
-                <button type="" class="btn btn-primary mr-5">Salir</button>
+                @if (auth()->user()->rol==1)
+                    
+                @else
+                    <button type="" class="btn btn-primary mr-5" onclick="location.href='{{route('/')}}'">Salir</button>
+
+                @endif
         </div>
     </div>
 </form>
