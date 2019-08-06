@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class operacion extends Model
 {
     //
-    protected $table = 'operacionbienestar_has_alumno';
+    protected $table = 'operacionestudiante';
     protected $primaryKey = 'idOperacionAlumno';
     //
     //datos que puede almacenar el usuario

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Entities\User;
+use App\User;
 use App\Entities\CarreraProfesional;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -50,16 +50,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'dni' => ['required','string','max:8'],
+            'dni' => ['required','numeric','min:10000000','max:99999999'],
             'nombre' => ['required', 'string', 'max:25'],
             'paterno' => ['required','string','max:25'],
             'materno' => ['required','string','max:25'],
-            'telefono' => ['required','string','max:15'],
+            'telefono' => ['required','string','max:999999999'],
             'direccion' => ['required','string','max:45'],
             'fechaNacimiento' => ['required','date','date_format:Y-m-d'],
             'genero' => ['required','string','max:2'],
             'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'rol' => ['min:1'],
         ]);
     }
 
@@ -78,10 +79,12 @@ class RegisterController extends Controller
             'materno' => $data['materno'],
             'telefono' => $data['telefono'],
             'direccion' => $data['direccion'],
+            'rol' => $data['rol'],
             'fechaNacimiento' => $data['fechaNacimiento'],
             'genero' => $data['genero'],
             'correo' => $data['correo'],
             'password' => Hash::make($data['password']),
+            'rol' => $data['rol'],
         ]);
     }
     public function showRegistrationForm()

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Oswald:700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('./css/style3.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -42,17 +42,44 @@
                         <li class="item"><a href="">PAGOS</a></li>
                     </ul> 
                 </div>  
-                    <form>
-                        <div class="form-group">
-                            <label class="form-label" for="exampleInputEmail1">User</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    {{-- nuevo login --}}
+                    <form method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <label for="dni" class="form-label text-md-right">{{ __('Dni') }}</label>
+
+                        
+                            <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autofocus>
+
+                            @error('dni')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label text-md-right">{{ __('Password') }}</label>
+
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+
+                    
+
+                    <div class="form-group mb-0">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Login') }}
+                            </button>
+                    </div>
+                </form>
         </div>
             <div class="col-9 main">
                 

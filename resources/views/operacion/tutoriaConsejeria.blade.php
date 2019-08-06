@@ -5,7 +5,12 @@
      <div class="d-flex justify-content-center">
         <h1 class="mt-4">Tutoria y Consegeria</h1>
     </div>
-    <form action=""></form>   
+    <form form action="{{$action}}" method="POST"> 
+        {{ csrf_field() }} 
+        <input style="display:none" type="text" id="idOperacionBienestar" name="idOperacionBienestar" value="8"> 
+
+        <input style="display:none" type="text" id="idAlumno" name="idAlumno" value="{{$alumno->idAlumno}}">
+        <input style="display:none" type="text" id="fechaInicio" name="fechaInicio" value="{{date("Y-m-d")}}">
             <div class="beca-integral ml-3 mt-3">     
                 <div class="form-group row">
                     <label  class="col-sm-3 ml-3 col-form-label">Fecha Tutoria</label>
@@ -32,7 +37,7 @@
                 </div>                    
                 <div class="d-flex justify-content-end  pt-4">
                         <button type="submit" class="btn btn-primary mx-5">Guardar</button>
-                        <button type="submit" class="btn btn-primary mr-5">Salir</button>
+                        <button type=""  class="btn btn-primary mr-5" onClick="history.back()">Salir</button>
                 </div>
                 <br>
                 <br>

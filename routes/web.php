@@ -13,7 +13,7 @@
 
  Route::get('/', function () {
      return view('index22');
- });
+ })->name('/');
 Route::get('/operacion/economico/{id}','operacionController@economico')->name('economico');
 Route::get('/operacion/prorroga/{id}','operacionController@prorroga')->name('prorroga');
 Route::get('/operacion/reincorporacion/{id}','operacionController@reincorporacion')->name('reincorporacion');

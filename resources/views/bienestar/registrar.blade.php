@@ -95,7 +95,7 @@
     </div>
     <div class="d-flex justify-content-end  pt-4">
             <button type="submit" class="btn btn-primary mx-5">Guardar</button>
-            <button type="submit" class="btn btn-primary mr-5">Salir</button>
+            <button type="" class="btn btn-primary mr-5">Salir</button>
     </div>
 </form>
 @endsection

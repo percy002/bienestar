@@ -7,6 +7,10 @@ use App\Entities\{Alumno,Operacion};
 
 class operacionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function economico($id)
     {
         $alumno= Alumno::find($id);
@@ -46,7 +50,7 @@ class operacionController extends Controller
     {
         $alumno= Alumno::find($id);
         $action = route('operacion.store');
-        return view('operacion.tutoriaConsejeria')->with(compact('action','alumno'));
+        return view('operacion.medico')->with(compact('action','alumno'));
     }
     /**
      * Display a listing of the resource.

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class carreraProfesional extends Model
 {
     //
-    protected $table = 'carreraprofesionals';
+    protected $table = 'carreraProfesionals';
 
     protected $primaryKey = 'idCarreraProfesional';
     

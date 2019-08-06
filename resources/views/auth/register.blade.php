@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="form-group row ">
-                            <label  class="col-sm-4 pl-5 col-form-label">Carrera Profeciona</label>
+                            <label  class="col-sm-4 pl-5 col-form-label">Carrera Profecional</label>
                             <div class="col-sm-7  ">
                                     <div class="form-group col-md-12 p-0">
                                             <select name="idCarreraProfesional" id="idCarreraProfesional" class="form-control">
@@ -96,10 +96,32 @@
                                     </div>
                             </div>
                         </div>
+                        <div class="form-group row ">
+                            <label  class="col-sm-4 pl-5 col-form-label">Rol</label>
+                            <div class="col-sm-7  ">
+                                    <div class="form-group col-md-12 p-0">
+                                            <select name="rol" id="rol" class="form-control">
+                                                    <option value="0">selecciona</option>
+                                                    <option value="1">administrador</option>
+                                                    <option value="2">Becas</option>
+                                                    <option value="3">Psicologico</option>
+                                                    <option value="4">Medico</option>
+                                                    <option value="5">Tutoria</option>
+                                                   
+                                            </select>
+                                    </div>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label  class="col-sm-4 pl-5 col-form-label">contraseña</label>
                             <div class="col-sm-7  ">
-                                <input type="text" class="form-control" id="password" name="password" placeholder="contraseña">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="contraseña">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-4 pl-5 col-form-label">confirmar contraseña</label>
+                            <div class="col-sm-7  ">
+                                <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="contraseña">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end  pt-4">
