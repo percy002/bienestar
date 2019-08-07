@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- asset para direccionar los css e iconos --}}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('./css/style3.css') }}">
-    <link rel="stylesheet" href="{{ asset('./css/icon-style1.css') }}">
 
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('./css/style3.css') }}">
+    <link rel="stylesheet" href="{{ asset('./css/icon-style1.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+
+
+
     <title>Document</title>
 </head>
 <body>
@@ -28,7 +32,7 @@
                         <img src="http://americanadelcusco.edu.pe/wp-content/uploads/2017/11/logo.gif" alt="">
                     </div>
             <nav class="nav">
-                <ul class="nav-ul"><a href=""> INICIO </a></ul>
+                <ul class="nav-ul"><a href='{{route('bienestar.index')}}'> INICIO </a></ul>
                 <ul class="nav-ul"><a href=""> EL INSTITUTO</a></ul>
                 <ul class="nav-ul"><a href=""> PROFECIONALIZACION</a></ul>
                 <ul class="nav-ul"><a href=""> BIENESTAR ESTUDIANTIL</a></ul>
@@ -72,7 +76,7 @@
                           <div class="card">
                             <div class="card-header" id="headingOne">
                               <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne" onclick=" location.href='bienestarEst.html' ">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne" onclick="location.href='{{route('bienestar.index')}}'">
                                   <span class="icon-home"></span> Inicio
                                 </button>
                               </h2>
@@ -112,8 +116,9 @@
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                               <div class="card-body">
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-users"></span> usarios</a></li>
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-user-plus"></span> Agregar Usuarios</a></li>
+                                  {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+                                  <li class="nav-aside-subitem"><a class="nav-aside-link" ><span class="icon-users"></span> usarios</a></li>
+                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('register') }}"><span class="icon-user-plus"></span> Agregar Usuarios</a></li>
                               </div>
                             </div>
                           </div>

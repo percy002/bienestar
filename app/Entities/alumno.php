@@ -14,6 +14,6 @@ class alumno extends Model
     //
 
     public function carrera(){
-        return $this->belongsTo(carreraProfesional::class,'idCarreraProfesional');
+        return $this->belongsTo('App\Entities\CarreraProfesional', 'idCarreraProfesional');
     }
 }

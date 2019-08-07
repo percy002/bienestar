@@ -11,8 +11,10 @@ class carreraProfesional extends Model
 
     protected $primaryKey = 'idCarreraProfesional';
     
+    protected $fillable=['nombreCarrera'];
+
     public function alumnos(){
-        return $this->hasMany(alumno::class,'idAlumno');
+        return $this->hasMany('App\Entities\Alumno','idAlumno');
     }
     
 }

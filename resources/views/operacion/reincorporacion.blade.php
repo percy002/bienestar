@@ -30,8 +30,14 @@
                     </div> 
                 </div>       
                 <div class="d-flex justify-content-end  pt-4">
-                        <button type="submit" class="btn btn-primary mx-5">Guardar</button>
-                        <button type="" class="btn btn-primary mr-5" onClick="history.back()">Salir</button>
+                    <button type="submit" class="btn btn-primary mx-5">Guardar</button>
+                    @if (auth()->user()->rol==1)
+                        <button type="button" class="btn btn-primary mr-5" onclick="location.href='{{route('operacion.show',['id'=>$alumno->idAlumno])}}'">Salir</button>
+
+                    @else
+                        <button type="button" class="btn btn-primary mr-5" onclick="location.href='{{route('bienestar.index')}}'">Salir</button>
+
+                    @endif
                 </div>
                 <br>
                 <br>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Entities\{Alumno,Operacion};
+use Carbon\Carbon;
 
 class operacionController extends Controller
 {
@@ -90,7 +91,7 @@ class operacionController extends Controller
         
         $operacion= new Operacion($request->input());
         $operacion->save();
-        return redirect()->route('operacion.show',['id'=>$request->input('idAlumno')]);
+        return redirect()->route('bienestar.index');
     }
 
     /**
@@ -103,7 +104,8 @@ class operacionController extends Controller
     {
         //
         $alumno= Alumno::find($id);
-        return view('operacion.opciones')->with(compact('alumno'));
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
+        return view('operacion.opciones')->with(compact('alumno','edadActual'));
     }
 
     /**

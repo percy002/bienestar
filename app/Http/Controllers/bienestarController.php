@@ -16,6 +16,11 @@ class bienestarController extends Controller
     {
         $this->middleware('auth');
     }
+    public function autocompletar(Request $request)
+    {
+        $alumnos=Alumno::select("nombre")->where("nombre","LIKE","%{$request->input(nombre)}%")->get;
+        return response()->jason($alumno);
+    }
     public function index()
     {
         //
@@ -122,7 +127,10 @@ class bienestarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alumno=Alumno::find($id);
+        $alumno->delete();
+
+        return back();
     }
 
      #reglas de validacion
@@ -134,15 +142,12 @@ class bienestarController extends Controller
             'dni.max'=> 'maximo 9 caracteres',
 
             'nombre.required' => 'el nombre es requerido',
-            'nombre.alpha' => 'el tiene que ser caracteres alfabéticos',
             'nombre.max' => 'maximo 25 caracteres en nombre',
 
             'paterno.required' => 'el apellido paterno es requerido',
-            'paterno.alpha' => 'el el tiene que ser caracteres alfabéticos',
             'paterno.max' => 'maximo 25 caracteres en apellido patrno',
 
             'materno.required' => 'el apellido materno es requerido',
-            'materno.alpha' => 'el tiene que ser caracteres alfabéticos',
             'materno.max' => 'maximo 25 caracteres en apellido materno',
 
             'telefono.required' => 'el telefono es requerido',
@@ -172,9 +177,9 @@ class bienestarController extends Controller
         ];
         $rules =[
             'dni' => 'required|numeric|min:10000000|max:99999999',
-            'nombre' => 'required|alpha|max:25',
-            'paterno' => 'required|alpha|max:25',
-            'materno' => 'required|alpha|max:25',
+            'nombre' => 'required|max:25',
+            'paterno' => 'required|max:25',
+            'materno' => 'required|max:25',
             'telefono' => 'required|Integer|min:10000|max:999999999',
             'direccion' => 'required|max:45',
             'fechaNacimiento' => 'required|date',

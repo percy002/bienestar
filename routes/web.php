@@ -37,12 +37,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('admin/login', 'AdminLoginController@showLoginForm');
-Route::post('admin/login', 'AdminLoginController@login')->name('admin.login');
-Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/login'],function(){	
-	Route::get('home',function ()
-	{
-		return view('admin/home');
-	});
-});
+
 

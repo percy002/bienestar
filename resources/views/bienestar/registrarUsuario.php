@@ -1,6 +1,6 @@
 @extends('layouts.invariable')
 
-{{-- reemplazar a yield(content) por este contenido --}}
+<!-- {{-- reemplazar a yield(content) por este contenido --}} -->
 @section('content')
 <!-- modificar esta parte  -->
         
