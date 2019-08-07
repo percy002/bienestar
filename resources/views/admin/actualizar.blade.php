@@ -18,25 +18,25 @@
     <div class="form-group row ">
         <label  class="col-sm-4 pl-5 col-form-label">DNI</label>
         <div class="col-sm-4  ">
-            <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI">
+            <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" value="{{$usuarios->dni}}">
         </div>
     </div>   
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">Nombre</label>
         <div class="col-sm-7  ">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{$usuarios->nombre}}">
         </div>
     </div> 
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">Apellido Paterno</label>
         <div class="col-sm-7  ">
-            <input type="twxt" class="form-control" id="paterno" name="paterno" placeholder="Apellidos paterno">
+            <input type="twxt" class="form-control" id="paterno" name="paterno" placeholder="Apellidos paterno" value="{{$usuarios->paterno}}">
         </div>
     </div> 
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">Apellido Materno</label>
         <div class="col-sm-7  ">
-            <input type="twxt" class="form-control" id="materno" name="materno" placeholder="Apellidos materno">
+            <input type="twxt" class="form-control" id="materno" name="materno" placeholder="Apellidos materno" value="{{$usuarios->materno}}">
         </div>
     </div>     
     <fieldset class="form-group ">
@@ -45,11 +45,15 @@
             <div class="col-sm-7 ">
                 <div class="form-check ml-3">
                     <input class="form-check-input" type="radio" name="genero" id="genero" value="m" checked>
-                    <label class="form-check-label" for="gridRadios1">M</label>
+                    <label class="form-check-label" for="gridRadios1">Masculino</label>
                 </div>
                 <div class="form-check ml-3">
+                    @if ($usuarios->genero=='f')
+                    <input class="form-check-input" type="radio" name="genero" id="genero" value="f" checked>
+                    @else
                     <input class="form-check-input" type="radio" name="genero" id="genero" value="f">
-                    <label class="form-check-label" for="gridRadios2">F</label>
+                    @endif
+                    <label class="form-check-label" for="gridRadios2">Femenino</label>
                 </div>
             </div>
         </div>
@@ -57,25 +61,25 @@
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">Telefono</label>
         <div class="col-sm-7  ">
-            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono">
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono" value="{{$usuarios->telefono}}">
         </div>
     </div> 
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">direccion</label>
         <div class="col-sm-7  ">
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion">
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" value="{{$usuarios->direccion}}">
         </div>
     </div> 
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">Email</label>
         <div class="col-sm-7  ">
-            <input type="email" class="form-control" id="correo" name="correo" placeholder="Email">
+            <input type="email" class="form-control" id="correo" name="correo" placeholder="Email" value="{{$usuarios->correo}}">
         </div>
     </div> 
     <div class="form-group row">
         <label  class="col-sm-4 pl-5 col-form-label">Fecha de Nacimiento</label>
         <div class="col-sm-7  ">
-            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" value="{{$usuarios->fechaNacimiento}}">
         </div>
     </div>
     <div class="form-group row ">
@@ -83,20 +87,22 @@
         <div class="col-sm-7  ">
                 <div class="form-group col-md-12 p-0">
                         <select name="idCarreraProfesional" id="idCarreraProfesional" class="form-control">
-                                <option value="0">selecciona</option>
-                                @if (!empty($carreras))
-                                    @foreach ($carreras as $c)
-                                        <option value="{{$c->idCarreraProfesional}}" {{$c->idCarreraProfesional ===$alumnos->idCarreraProfesional ? 'select' : ''}}>{{$c->nombreCarrera}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                            <option value="0">selecciona</option>
+                            @if (!empty($carreras))
+                                @foreach ($carreras as $c)
+                                    <option value="{{$c->idCarreraProfesional}}" {{($c->idCarreraProfesional == '1') ? 'selected' : ''}}>{{$c->nombreCarrera}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                 </div>
         </div>
     </div>
     <div class="d-flex justify-content-end  pt-4">
             <button type="submit" class="btn btn-primary mx-5">Guardar</button>
-            <button type="" class="btn btn-primary mr-5" onclick="location.href='{{route('bienestar.index')}}'">Salir</button>
-
+            <button type="submit" class="btn btn-primary mr-5">Salir</button>
     </div>
+    @if (!empty($put))
+        <input type="hidden" name="_method" value="PUT">
+    @endif
 </form>
 @endsection

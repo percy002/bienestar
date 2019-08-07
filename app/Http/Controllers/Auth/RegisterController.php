@@ -49,8 +49,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $message=[
+            'dni.max' => "el campo dni debe tener maximo 8 digitos",
+        ]; 
         return Validator::make($data, [
-            'dni' => ['required','numeric','min:10000000','max:99999999'],
+            'dni' => ['required','numeric','min:10000000','max:99999999', 'unique:users'],
             'nombre' => ['required', 'string', 'max:25'],
             'paterno' => ['required','string','max:25'],
             'materno' => ['required','string','max:25'],
@@ -61,7 +64,7 @@ class RegisterController extends Controller
             'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
             'rol' => ['min:1'],
-        ]);
+        ],$message);
     }
 
     /**

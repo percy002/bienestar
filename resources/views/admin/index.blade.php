@@ -13,7 +13,7 @@
             </form>
         </div>
         <div class="body-item-2 d-flex justify-content-end mt-2">
-                <button type="button " class="btn btn-primary mr-3" onclick="location.href='{{route('bienestar.create')}}'">Agregar alumno</button>
+                <button type="button " class="btn btn-primary mr-3" onclick="location.href='{{route('register')}}'">Agregar alumno</button>
 
         </div>
         <div class="body-item-3 mt-5">
@@ -23,48 +23,21 @@
                         <th scope="col">Codigo</th>
                         <th scope="col">Apellidos</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Carrera</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($alumnos as $alumno)
+                        @foreach ($usuarios as $usuario)
                             <tr>
-                            <th scope="row">{{$alumno->dni}}</th>
-                            <td>{{$alumno->paterno}} {{$alumno->materno}}</td>
-                            <td>{{$alumno->nombre}}</td>
-                            <td>{{$alumno->carrera->nombreCarrera}}</td>
+                            <th scope="row">{{$usuario->dni}}</th>
+                            <td>{{$usuario->paterno}} {{$usuario->materno}}</td>
+                            <td>{{$usuario->nombre}}</td>
                             <td class="d-flex justify-content-end">
-                                @switch(auth()->user()->rol)
-                                    @case(1)
-                                    <button type="button " class="btn btn-warning " onclick="location.href='{{route('bienestar.edit',['id'=>$alumno->idAlumno])}}'"><span class="icon-pencil"></span></button>
-                                    <form action="{{route('bienestar.destroy',$alumno->idAlumno)}}" method="POST">
+                                    <button type="button " class="btn btn-warning " onclick="location.href='{{route('administrador.edit',['id'=>$usuario->id])}}'"><span class="icon-pencil"></span></button>
+                                    <form action="{{route('administrador.destroy',$usuario->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button  class="btn btn-danger mx-2"><span class="icon-bin"></span></button>
                                     </form>
-
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('operacion.show',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-                                    @break
-                                
-                                    @case(2)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('economico',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                        @break
-                                    @case(3)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('psicologico',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                        @break
-                                    @case(4)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('medico',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                    @break
-                                    @case(5)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('tutoriaConsejeria',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                    @break
-                                        
-                                @endswitch
-                                    
                                 
                             </td>
                             </tr> 

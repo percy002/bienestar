@@ -117,7 +117,7 @@
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                               <div class="card-body">
                                   {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" ><span class="icon-users"></span> usarios</a></li>
+                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('administrador.index') }}"><span class="icon-users"></span> usarios</a></li>
                                   <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('register') }}"><span class="icon-user-plus"></span> Agregar Usuarios</a></li>
                               </div>
                             </div>

@@ -28,6 +28,11 @@ Route::resource('alumno','alumnoController');
 Route::resource('carreraProfesional','carreraProfesionalController');
 Route::resource('operacion','operacionController');
 
+Route::resource('administrador','administradorController');
+
+
+
+
 
 
 

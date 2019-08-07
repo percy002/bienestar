@@ -130,6 +130,7 @@ class alumnoController extends Controller
             'dni.Integer'=> 'solo numero enteros',
             'dni.min'=> 'minimo 8 caracteres',
             'dni.max'=> 'maximo 8 caracteres',
+            'dni.unique' => 'ya hay un alumno registrado con este dni',
 
             'nombre.required' => 'el nombre es requerido',
             'nombre.alpha' => 'el tiene que ser caracteres alfabéticos',
@@ -169,7 +170,7 @@ class alumnoController extends Controller
 
         ];
         $rules =[
-            'dni' => 'required|Integer|min:8|max:8',
+            'dni' => 'required|Integer|min:8|max:8|unique:alumnos',
             'nombre' => 'required|alpha|max:25',
             'paterno' => 'required|alpha|max:25',
             'materno' => 'required|alpha|max:25',

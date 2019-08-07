@@ -7,6 +7,14 @@
 <h1 class="d-flex justify-content-center">Registro de estudiante</h1>
 <form action="{{$action}}" method="POST" class="mt-5">
     {{ csrf_field() }}
+    <div class="alert alert-danger">
+        <p><strong>oops</strong></p>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
     <div class="form-group row ">
         <label  class="col-sm-4 pl-5 col-form-label">DNI</label>
         <div class="col-sm-4  ">
@@ -36,12 +44,16 @@
             <legend class="col-form-label col-sm-4 pt-0 pl-5">genero</legend>
             <div class="col-sm-7 ">
                 <div class="form-check ml-3">
-                    <input class="form-check-input" type="radio" name="genero" id="genero" value="m" >
-                    <label class="form-check-label" for="gridRadios1">M</label>
+                    <input class="form-check-input" type="radio" name="genero" id="genero" value="m" checked>
+                    <label class="form-check-label" for="gridRadios1">Masculino</label>
                 </div>
                 <div class="form-check ml-3">
-                    <input class="form-check-input" type="radio" name="genero" id="genero">
-                    <label class="form-check-label" for="gridRadios2">F</label>
+                    @if ($alumno->genero=='f')
+                    <input class="form-check-input" type="radio" name="genero" id="genero" value="f" checked>
+                    @else
+                    <input class="form-check-input" type="radio" name="genero" id="genero" value="f">
+                    @endif
+                    <label class="form-check-label" for="gridRadios2">Femenino</label>
                 </div>
             </div>
         </div>
@@ -78,7 +90,7 @@
                             <option value="0">selecciona</option>
                             @if (!empty($carreras))
                                 @foreach ($carreras as $c)
-                                    <option value="{{$c->idCarreraProfesional}}" >{{$c->NombreCarrera}}</option>
+                                    <option value="{{$c->idCarreraProfesional}}" {{($c->idCarreraProfesional == '1') ? 'selected' : ''}}>{{$c->nombreCarrera}}</option>
                                 @endforeach
                             @endif
                         </select>

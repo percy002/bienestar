@@ -16,11 +16,7 @@ class bienestarController extends Controller
     {
         $this->middleware('auth');
     }
-    public function autocompletar(Request $request)
-    {
-        $alumnos=Alumno::select("nombre")->where("nombre","LIKE","%{$request->input(nombre)}%")->get;
-        return response()->jason($alumno);
-    }
+    
     public function index()
     {
         //
@@ -104,6 +100,8 @@ class bienestarController extends Controller
     public function update(Request $request, $id)
     {
         //
+        list($rules,$messages)=$this->_rules();
+         $this->validate($request,$rules,$messages);
         $alumno=Alumno::find($id);
         $alumno->dni=$request->input('dni');
         $alumno->nombre=$request->input('nombre');
@@ -140,6 +138,7 @@ class bienestarController extends Controller
             'dni.Integer'=> 'solo numero enteros',
             'dni.min'=> 'minimo 8 caracteres',
             'dni.max'=> 'maximo 9 caracteres',
+            'dni.unique' => "ya hay un alumno registrado con este dni",
 
             'nombre.required' => 'el nombre es requerido',
             'nombre.max' => 'maximo 25 caracteres en nombre',
@@ -176,7 +175,7 @@ class bienestarController extends Controller
 
         ];
         $rules =[
-            'dni' => 'required|numeric|min:10000000|max:99999999',
+            'dni' => 'required|numeric|min:10000000|max:99999999|unique:alumnos',
             'nombre' => 'required|max:25',
             'paterno' => 'required|max:25',
             'materno' => 'required|max:25',
