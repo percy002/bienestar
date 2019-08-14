@@ -22,6 +22,17 @@ class bienestarController extends Controller
         //
         $carrera=CarreraProfesional::all();
         $alumnos=Alumno::all();
+        
+        // switch ($auth()->user()->rol) {
+        //     case '2':
+        //         $alumnos=Alumno::where()
+        //         break;
+            
+        //     default:
+        //         # code...
+        //         break;
+        // }
+        
         return view('bienestar.index')->with(compact('alumnos'));
     }
 

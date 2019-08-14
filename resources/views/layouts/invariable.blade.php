@@ -26,7 +26,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container ">
+    <div class="container-fluid ">
         <header class="con-header ">
                 <div class="logo-gif">
                         <img src="http://americanadelcusco.edu.pe/wp-content/uploads/2017/11/logo.gif" alt="">

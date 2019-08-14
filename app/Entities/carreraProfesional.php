@@ -14,7 +14,7 @@ class carreraProfesional extends Model
     protected $fillable=['nombreCarrera'];
 
     public function alumnos(){
-        return $this->hasMany('App\Entities\Alumno','idAlumno');
+        return $this->hasMany('App\Entities\Alumno','idCarreraProfesional');
     }
     
 }

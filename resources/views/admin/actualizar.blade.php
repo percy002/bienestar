@@ -83,23 +83,24 @@
         </div>
     </div>
     <div class="form-group row ">
-        <label  class="col-sm-4 pl-5 col-form-label">Carrera Profeciona</label>
+        <label  class="col-sm-4 pl-5 col-form-label">Rol</label>
         <div class="col-sm-7  ">
                 <div class="form-group col-md-12 p-0">
-                        <select name="idCarreraProfesional" id="idCarreraProfesional" class="form-control">
-                            <option value="0">selecciona</option>
-                            @if (!empty($carreras))
-                                @foreach ($carreras as $c)
-                                    <option value="{{$c->idCarreraProfesional}}" {{($c->idCarreraProfesional == '1') ? 'selected' : ''}}>{{$c->nombreCarrera}}</option>
-                                @endforeach
-                            @endif
+                        <select name="idRoles" id="idRoles" class="form-control">
+                                <option value="6">inabilitado</option>
+                                <option value="1">administrador</option>
+                                <option value="2">Becas</option>
+                                <option value="3">Psicologico</option>
+                                <option value="4">Medico</option>
+                                <option value="5">Tutoria</option>
+                                
                         </select>
                 </div>
         </div>
     </div>
     <div class="d-flex justify-content-end  pt-4">
             <button type="submit" class="btn btn-primary mx-5">Guardar</button>
-            <button type="submit" class="btn btn-primary mr-5">Salir</button>
+            <button type="button" class="btn btn-primary mr-5" onclick="location.href='{{route('bienestar.index')}}'">Salir</button>
     </div>
     @if (!empty($put))
         <input type="hidden" name="_method" value="PUT">

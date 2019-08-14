@@ -82,12 +82,11 @@ class RegisterController extends Controller
             'materno' => $data['materno'],
             'telefono' => $data['telefono'],
             'direccion' => $data['direccion'],
-            'rol' => $data['rol'],
+            'idRol' => $data['idRol'],
             'fechaNacimiento' => $data['fechaNacimiento'],
             'genero' => $data['genero'],
             'correo' => $data['correo'],
             'password' => Hash::make($data['password']),
-            'rol' => $data['rol'],
         ]);
     }
     public function showRegistrationForm()

@@ -28,10 +28,10 @@
             <div><label for="">{{$alumno->correo}}</label></div>
 
             <div><label for="">Edad :</label></div>
-            <div><label for="">{{$alumno->dni}}</label></div>
+            <div><label for="">{{$edadActual}}</label></div>
 
             <div><label for="">Carrera profecional :</label></div>
-            <div><label for="">{{$alumno->dni}}</label></div>
+            <div><label for="">{{$alumno->carrera->nombreCarrera}}</label></div>
         </div>
         <!-- solo cambiar esta parte -->
         <div class="d-flex justify-content-center">

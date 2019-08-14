@@ -76,27 +76,13 @@
                 <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
             </div>
         </div>
-        <div class="form-group row ">
-            <label  class="col-sm-4 pl-5 col-form-label">Carrera Profecional</label>
-            <div class="col-sm-7  ">
-                    <div class="form-group col-md-12 p-0">
-                            <select name="idCarreraProfesional" id="idCarreraProfesional" class="form-control">
-                                    <option value="0">selecciona</option>
-                                    @if (!empty($carreras))
-                                        @foreach ($carreras as $c)
-                                            <option value="{{$c->idCarreraProfesional}}"}}>{{$c->nombreCarrera}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                    </div>
-            </div>
-        </div>
+        
         <div class="form-group row ">
             <label  class="col-sm-4 pl-5 col-form-label">Rol</label>
             <div class="col-sm-7  ">
                     <div class="form-group col-md-12 p-0">
-                            <select name="rol" id="rol" class="form-control">
-                                    <option value="0">selecciona</option>
+                            <select name="idRoles" id="idRoles" class="form-control">
+                                    <option value="6">inabilitado</option>
                                     <option value="1">administrador</option>
                                     <option value="2">Becas</option>
                                     <option value="3">Psicologico</option>

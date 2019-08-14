@@ -14,44 +14,52 @@ class operacionController extends Controller
     }
     public function economico($id)
     {
-        $alumno= Alumno::find($id);
-        return view('operacion.economico')->with(compact('alumno'));
+
+        $alumno= Alumno::find($id);$edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
+        return view('operacion.economico')->with(compact('alumno','edadActual'));
     }
     public function prorroga($id)
     {
         $alumno= Alumno::find($id);
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
         $action = route('operacion.store');
-        return view('operacion.prorroga')->with(compact('action','alumno'));
+        return view('operacion.prorroga')->with(compact('action','alumno','edadActual'));
     }
     public function reincorporacion($id)
     {
         $alumno= Alumno::find($id);
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
         $action = route('operacion.store');
-        return view('operacion.reincorporacion')->with(compact('action','alumno'));
+        return view('operacion.reincorporacion')->with(compact('action','alumno','edadActual'));
     }
     public function becas($id)
     {
         $alumno= Alumno::find($id);
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
+
         $action = route('operacion.store');
-        return view('operacion.becas')->with(compact('action','alumno'));
+        return view('operacion.becas')->with(compact('action','alumno','edadActual'));
     }
     public function psicologico($id)
     {
         $alumno= Alumno::find($id);
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
         $action = route('operacion.store');
-        return view('operacion.psicologico')->with(compact('action','alumno'));
+        return view('operacion.psicologico')->with(compact('action','alumno','edadActual'));
     }
     public function tutoriaConsejeria($id)
     {
         $alumno= Alumno::find($id);
         $action = route('operacion.store');
-        return view('operacion.tutoriaConsejeria')->with(compact('action','alumno'));
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
+        return view('operacion.tutoriaConsejeria')->with(compact('action','alumno','edadActual'));
     }
     public function medico($id)
     {
         $alumno= Alumno::find($id);
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
         $action = route('operacion.store');
-        return view('operacion.medico')->with(compact('action','alumno'));
+        return view('operacion.medico')->with(compact('action','alumno','edadActual'));
     }
     /**
      * Display a listing of the resource.
@@ -74,8 +82,9 @@ class operacionController extends Controller
     {
         //
         $alumno= Alumno::find($id);
+        $edadActual = Carbon::parse($alumno->fechaNacimiento)->age; 
         $action = route('operacion.store');
-        return view('operacion.becas')->with(compact('action','alumno'));
+        return view('operacion.becas')->with(compact('action','alumno','edadActual'));
     }
     
 

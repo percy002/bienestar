@@ -34,7 +34,7 @@
                             <td>{{$alumno->nombre}}</td>
                             <td>{{$alumno->carrera->nombreCarrera}}</td>
                             <td class="d-flex justify-content-end">
-                                @switch(auth()->user()->rol)
+                                @switch(auth()->user()->idRoles)
                                     @case(1)
                                     <button type="button " class="btn btn-warning " onclick="location.href='{{route('bienestar.edit',['id'=>$alumno->idAlumno])}}'"><span class="icon-pencil"></span></button>
                                     <form action="{{route('bienestar.destroy',$alumno->idAlumno)}}" method="POST">

@@ -80,6 +80,8 @@ class administradorController extends Controller
     public function update(Request $request, $id)
     {
         //
+        list($rules,$messages)=$this->_rules();
+        $this->validate($request,$rules,$messages);
         $usuario=User::find($id);
         $usuario->dni=$request->input('dni');
         $usuario->nombre=$request->input('nombre');
@@ -89,13 +91,13 @@ class administradorController extends Controller
         $usuario->telefono=$request->input('telefono');
         $usuario->direccion=$request->input('direccion');
         $usuario->correo=$request->input('correo');
-        $usuario->rol=$request->input('rol');
+        $usuario->idRoles=$request->input('idRoles');
         $usuario->fechaNacimiento=$request->input('fechaNacimiento');
         $usuario->save();
 
         
 
-        return redirect()->route('admin.index');
+        return redirect()->route('administrador.index');
     }
 
     /**
@@ -111,5 +113,63 @@ class administradorController extends Controller
         $usuarios->delete();
 
         return back();
+    }
+
+    private function _rules(){
+        $messages=[
+            'dni.required' => 'el dni es requerido',
+            'dni.Integer'=> 'solo numero enteros',
+            'dni.min'=> 'minimo 8 caracteres',
+            'dni.max'=> 'maximo 9 caracteres',
+            'dni.unique' => "ya hay un alumno registrado con este dni",
+
+            'nombre.required' => 'el nombre es requerido',
+            'nombre.max' => 'maximo 25 caracteres en nombre',
+
+            'paterno.required' => 'el apellido paterno es requerido',
+            'paterno.max' => 'maximo 25 caracteres en apellido patrno',
+
+            'materno.required' => 'el apellido materno es requerido',
+            'materno.max' => 'maximo 25 caracteres en apellido materno',
+
+            'telefono.required' => 'el telefono es requerido',
+            'telefono.Integer' => 'solo numero enteros',
+            'telefono.min' => 'minimo 8 caracteres en telefono',
+            'telefono.max' => 'maximo 9 caracteres en telefono',
+
+            'direccion.required' => 'la direccion es requerida',
+            'direccion.max' => 'maximo 45 caracteres en espacion direccion',
+
+            'fechaNacimiento.required' => 'fecha de Nacimiento es requerida',
+            'fechaNacimiento.date' => 'completar  Fecha valida de nacimiento',
+
+            'genero.required' => 'el genero es requerida',
+            'genero.max' => 'maximo 2 caracteres en genero',
+
+            'correo.required' => 'el correo es requerida',
+            'correo.E-Mail' => 'Correo invalido',
+            'correo.max' => 'maximo 45 caracteres correo',
+
+            // 'idCarreraProfecional.required' => 'el Id de carrera profecional es requerido es requerido',
+            // 'idCarreraProfecional.Integer' => 'solo numero enteros',
+            // 'idCarreraProfecional.min' => 'minimo 11 caracteres',
+            // 'idCarreraProfecional.digits_between' => 'el numero requerido deve estar entre el 1 y 20',
+            
+
+        ];
+        $rules =[
+            'dni' => 'required|numeric|min:10000000|max:99999999|unique:alumnos',
+            'nombre' => 'required|max:25',
+            'paterno' => 'required|max:25',
+            'materno' => 'required|max:25',
+            'telefono' => 'required|Integer|min:10000|max:999999999',
+            'direccion' => 'required|max:45',
+            'fechaNacimiento' => 'required|date',
+            'genero' => 'required|max:2',
+            'correo' => 'required|E-Mail|max:45',
+            // 'idCarreraProfecional' => 'required|integer|max:11|digits_between:1,20|',
+        ];
+
+        return array($rules,$messages);
     }
 }
