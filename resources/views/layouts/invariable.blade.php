@@ -114,22 +114,25 @@
                                   </div>
                             </div>
                           </div>
+                          @if (auth()->user()->idRoles==1)
                           <div class="card">
-                            <div class="card-header" id="headingThree">
-                              <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                  <span class="icon-user-tie"></span> Administrador
-                                </button>
-                              </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                              <div class="card-body">
-                                  {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('administrador.index') }}"><span class="icon-users"></span> usarios</a></li>
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('register') }}"><span class="icon-user-plus"></span> Agregar Usuarios</a></li>
+                              <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <span class="icon-user-tie"></span> Administrador
+                                  </button>
+                                </h2>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+                                    <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('administrador.index') }}"><span class="icon-users"></span> usarios</a></li>
+                                    <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('register') }}"><span class="icon-user-plus"></span> Agregar Usuarios</a></li>
+                                </div>
                               </div>
                             </div>
-                          </div>
+                          @endif
+                          
                     </div>  
             </div>
 
