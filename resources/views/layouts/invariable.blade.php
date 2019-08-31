@@ -34,9 +34,9 @@
             <nav class="nav">
                 <ul class="nav-ul"><a href='{{route('bienestar.index')}}'> INICIO </a></ul>
                 <ul class="nav-ul"><a href=""> EL INSTITUTO</a></ul>
-                <ul class="nav-ul"><a href=""> PROFECIONALIZACION</a></ul>
+                <ul class="nav-ul"><a href=""> PROFESIONALIZACION</a></ul>
                 <ul class="nav-ul"><a href=""> BIENESTAR ESTUDIANTIL</a></ul>
-                <ul class="nav-ul"><a href=""> ADIMICION</a></ul>
+                <ul class="nav-ul"><a href=""> ADMISION</a></ul>
                 <ul class="nav-ul"><a href=""> NOTICIAS</a></ul>
                 <ul class="nav-ul"><a href=""> EVENTOS</a></ul>
                 <ul class="nav-ul"><a href="">CONTACTOS</a></ul>
@@ -98,12 +98,20 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-file-text2"></span> Bienestar Economico</a></li>
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-file-text2"></span> Bienestar Psicologico</a></li>
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-file-text2"></span> Bienestar Asistencia Medica</a></li>
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-file-text2"></span> Bienestar Tutoria y Consegeria</a></li>
-                                  <li class="nav-aside-subitem"><a class="nav-aside-link" href=""><span class="icon-file-text2"></span> Alumno</a></li>
-                              </div>
+                                @if(auth()->user()->idRoles==1)
+                                      <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('reportes',auth()->user()->idRoles) }}"><span class="icon-file-text2"></span> Todos los alumnos</a></li>
+
+                                      <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('reportes','2') }}"><span class="icon-file-text2"></span> Bienestar Economico</a></li>
+                                      <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('reportes','3') }}"><span class="icon-file-text2"></span> Bienestar Psicologico</a></li>
+                                      <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('reportes','4') }}"><span class="icon-file-text2"></span> Bienestar Asistencia Medica</a></li>
+                                      <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('reportes','5') }}"><span class="icon-file-text2"></span> Bienestar Tutoria y Consegeria</a></li>
+                                
+                                        
+                                @else
+                                <li class="nav-aside-subitem"><a class="nav-aside-link" href="{{ route('reportes',auth()->user()->idRoles) }}"><span class="icon-file-text2"></span> Ver Reportes</a></li>
+
+                                @endif
+                                  </div>
                             </div>
                           </div>
                           <div class="card">

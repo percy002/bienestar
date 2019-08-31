@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\Usuario;
+use App\Entities\{Alumno,Operacion};
+use Carbon\Carbon;
+use App;
 
 class usuarioController extends Controller
 {
@@ -12,10 +14,156 @@ class usuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function reporteAlumnos($idRoles)
+    {
+        switch ($idRoles) {
+            case '1':
+                $operaciones=Operacion::all();
+                // return view('usuario.index')->with(compact('operaciones'));
+                break;
+            case '2':
+                $operaciones=Operacion::whereBetween('idOperacionBienestar', [1, 5])->get();
+                // ->orWhere('idOperacionBienestar','3')
+                // ->orWhere('idOperacionBienestar','4')->get();
+                // return view('usuario.index')->with(compact('operaciones'));
+            break;
+
+            case '3':
+                $operaciones=Operacion::where('idOperacionBienestar','6')->get();
+                // return view('usuario.index')->with(compact('operaciones'));
+            break;
+
+            case '4':
+                $operaciones=Operacion::where('idOperacionBienestar','7')->get();
+                // return view('usuario.index')->with(compact('operaciones'));
+            break;
+
+            case '5':
+            # code...
+                $operaciones=Operacion::where('idOperacionBienestar','8')->get();
+                // return view('usuario.index')->with(compact('operaciones'));
+                break;
+        }
+
+        // $operacionesAlumno=Operacion::all()->where('idAlumno',$idAlumno)->where('idOperacionBienestar',$idOperacionBienestar);
+        $alumno=$operaciones->first();
+        $edadActual = Carbon::parse($alumno->alumno->fechaNacimiento)->age;
+        
+        $h1="Reporte Tutoria Consejeria";
+        switch ($idRoles) {
+            case '2':
+                $h1="Reporte Bienestar Economico";
+                break;
+            case '3':
+                $h1="Reporte Bienestar Psicologico";
+                break;
+            case '4':
+                $h1="Reporte bienestar Medico";
+                break;
+            case '5':
+                $h1="Reporte de todos los Alumnos";
+                break;
+            }
+
+        $pdf = App::make('dompdf.wrapper');
+        //$alumno=Alumno::all()->first();
+        // dd($h1);
+        $pdf->loadView('reportes.reporteAlumnos',compact('alumno','edadActual','operaciones','h1'));
+        return $pdf->stream();
+    }
+    public function imprimirReporteXalumno($idAlumno,$idOperacionBienestar){
+        $operacionesAlumno=Operacion::all()->where('idAlumno',$idAlumno)->where('idOperacionBienestar',$idOperacionBienestar);
+        $alumno=$operacionesAlumno->first();
+        $edadActual = Carbon::parse($alumno->alumno->fechaNacimiento)->age;
+        switch ($idOperacionBienestar) {
+            case '6':
+                $h1="Reporte Bienestar Psicologico";
+                break;
+            case '7':
+                $h1="Reporte Bienestar Medico";
+                break;
+            case '8':
+                $h1="Reporte Tutoria y Consejeria";
+                break;
+            
+            default:
+                $h1="Reporte Bienestar Economico";
+            
+                break;
+        }
+
+        $pdf = App::make('dompdf.wrapper');
+        //$alumno=Alumno::all()->first();
+        $pdf->loadView('reportes.reporteXalumno',compact('alumno','edadActual','operacionesAlumno','h1'));
+        return $pdf->stream();
+    }
+    public function imprimirReporte()
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('<h1>Test</h1>');
+        return $pdf->stream();
+    }
+    public function reporteXalumno($idAlumno,$idOperacionBienestar)
+    {
+        
+        // $operaciones=Operacion::where('idAlumno',$idAlumno)->first()->get();
+            $operacionesAlumno=Operacion::all()->where('idAlumno',$idAlumno)->where('idOperacionBienestar',$idOperacionBienestar);
+            $alumno=$operacionesAlumno->first();
+            $edadActual = Carbon::parse($alumno->alumno->fechaNacimiento)->age;
+            switch ($idOperacionBienestar) {
+                case '6':
+                    $h1="Reporte Bienestar Psicologico";
+                    break;
+                case '7':
+                    $h1="Reporte Bienestar Medico";
+                    break;
+                case '8':
+                    $h1="Reporte Tutoria y Consejeria";
+                    break;
+                
+                default:
+                    $h1="Reporte Bienestar Economico";
+                
+                    break;
+            }
+
+        return view('usuario.reportes')->with(compact('alumno','edadActual','operacionesAlumno','h1'));
+    }
+    public function reportes($idRol)
+    {
+        switch ($idRol) {
+            case '1':
+                $operaciones=Operacion::all();
+                return view('usuario.index')->with(compact('operaciones'));
+                break;
+            case '2':
+                $operaciones=Operacion::whereBetween('idOperacionBienestar', [1, 5])->get();
+                // ->orWhere('idOperacionBienestar','3')
+                // ->orWhere('idOperacionBienestar','4')->get();
+                return view('usuario.index')->with(compact('operaciones'));
+            break;
+
+            case '3':
+                $operaciones=Operacion::where('idOperacionBienestar','6')->get();
+                return view('usuario.index')->with(compact('operaciones'));
+            break;
+
+            case '4':
+                $operaciones=Operacion::where('idOperacionBienestar','7')->get();
+                return view('usuario.index')->with(compact('operaciones'));
+            break;
+
+            case '5':
+            # code...
+                $operaciones=Operacion::where('idOperacionBienestar','8')->get();
+                return view('usuario.index')->with(compact('operaciones'));
+                break;
+        }
+    }
     public function index()
     {
-        $usuarios=Usuario::all();
-        return view('usuario.index')->with(compact('usuarios'));
+        $operaciones=Operacion::all()->where('idOperacionBienestar','1');
+        return view('usuario.index')->with(compact('operaciones'));
     }
 
     /**
@@ -26,9 +174,7 @@ class usuarioController extends Controller
     public function create()
     {
         //
-        $action = route('usuario.store');
-        $usuarios = new Usuario();
-        return view('usuario.usuarioGuardar')->with(compact('action','usuarios'));
+       
     }
 
     /**
@@ -40,9 +186,7 @@ class usuarioController extends Controller
     public function store(Request $request)
     {
         //
-        $usuarios= new Usuario($request->input());
-        $usuarios->save();
-        return redirect()->route('usuario.index');
+      
     }
 
     /**
@@ -65,17 +209,7 @@ class usuarioController extends Controller
     public function edit($idUsuario)
     {
         //
-        $usuario=Usuario::find($idUsuario);
-        $action=route('usuario.update',['id'=>$idUsuario]);
-        $put=true;
-        return view('usuario.actualizar')->with(compact('usuario','action','put'));
-
-        // $tarea = Tarea::find($id);
-        // $prioridades=Prioridad::all();
-        // $put=true;
-        // $action=route('tareas.update',['id'=>$id]);
-
-        // return view('tareas.actualizar')->with(compact('tarea','action','prioridades','put'));
+       
     }
 
     /**
@@ -88,21 +222,7 @@ class usuarioController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $usuario=Usuario::find($id);
-        $usuario->dni=$request->input('dni');
-        $usuario->nombre=$request->input('nombre');
-        $usuario->paterno=$request->input('paterno');
-        $usuario->materno=$request->input('materno');
-        $usuario->genero=$request->input('genero');
-        $usuario->telefono=$request->input('telefono');
-        $usuario->direccion=$request->input('direccion');
-        $usuario->correo=$request->input('correo');
-        $usuario->fechaNacimiento=$request->input('fechaNacimiento');
-        $usuario->save();
-
-        
-
-        return redirect()->route('usuario.index');
+       
     }
 
     /**
@@ -113,10 +233,6 @@ class usuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $usuario=Usuario::find($id);
-        $usuario->delete();
-
-        return back();
+       
     }
 }

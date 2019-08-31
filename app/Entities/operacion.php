@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class operacion extends Model
 {
     //
-    protected $table = 'operacionEstudiante';
+    protected $table = 'operacionestudiante';
     protected $primaryKey = 'idOperacionAlumno';
     //
     //datos que puede almacenar el usuario
@@ -16,5 +16,10 @@ class operacion extends Model
     public function alumno()
     {
         return $this->belongsTo('App\Entities\Alumno', 'idAlumno');
+    }
+
+    public function operacion()
+    {
+        return $this->belongsTo('App\Entities\OperacionBienestar', 'idOperacionBienestar');
     }
 }

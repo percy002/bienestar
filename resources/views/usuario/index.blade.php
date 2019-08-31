@@ -12,10 +12,8 @@
                 <input class="form-control mr-3 " type="search" placeholder="buscar" aria-label="Search" id="buscar" name="buscar">
             </form>
         </div>
-        <div class="body-item-2 d-flex justify-content-end mt-2">
-                <button type="button " class="btn btn-primary mr-3" onclick="location.href='{{route('bienestar.create')}}'">Agregar alumno</button>
-
-        </div>
+        
+        <u class="mx-2"><a href="{{route('imprimirAlumnos',['idRoles'=>auth()->user()->idRoles])}}">imprimir</a></u>
         <div class="body-item-3 mt-5">
                 <table class="table table-striped table-hover" id="tabla_alumnos">
                     <thead>
@@ -23,47 +21,32 @@
                         <th scope="col">Codigo</th>
                         <th scope="col">Apellidos</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Carrera</th>
+                        <th scope="col">Carreras</th>
+                        <th scope="col">Operacion</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($alumnos as $alumno)
+                        
+                        @foreach ($operaciones as $operacion)
                             <tr>
-                            <th scope="row">{{$alumno->dni}}</th>
-                            <td>{{$alumno->paterno}} {{$alumno->materno}}</td>
-                            <td>{{$alumno->nombre}}</td>
-                            <td>{{$alumno->carrera->nombreCarrera}}</td>
+                            {{-- <th scope="row">{{$operacion->alumno()->dni}}</th> --}}
+                            <th scope="row">{{$operacion->alumno->dni}}</th>
+                            <td>{{$operacion->alumno->paterno}} {{$operacion->alumno->materno}}</td>
+                            <td>{{$operacion->alumno->nombre}}</td>
+                            <td>{{$operacion->alumno->carrera->nombreCarrera}}</td>
+                            <td>{{$operacion->operacion->nombreOperacion}}</td>
                             <td class="d-flex justify-content-end">
-                                @switch(auth()->user()->rol)
-                                    @case(1)
-                                    <button type="button " class="btn btn-warning " onclick="location.href='{{route('bienestar.edit',['id'=>$alumno->idAlumno])}}'"><span class="icon-pencil"></span></button>
-                                    <form action="{{route('bienestar.destroy',$alumno->idAlumno)}}" method="POST">
+                                @if(auth()->user()->idRoles)
+                                    {{-- <button type="button " class="btn btn-warning " onclick="location.href=''"><span class="icon-pencil"></span></button> --}}
+                                    {{-- <form action="{{}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button  class="btn btn-danger mx-2"><span class="icon-bin"></span></button>
-                                    </form>
-
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('operacion.show',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-                                    @break
+                                    </form> --}}
+                                    @endif
+                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('reporteXalumno',['idAlumno'=>$operacion->alumno->idAlumno , 'idOperacionBienestar'=>$operacion->idOperacionBienestar])}}'">Reporte</button>
+                                    
                                 
-                                    @case(2)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('economico',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                        @break
-                                    @case(3)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('psicologico',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                        @break
-                                    @case(4)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('medico',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                    @break
-                                    @case(5)
-                                    <button type="button " class="btn  btn-success " onclick="location.href='{{route('tutoriaConsejeria',['id'=>$alumno->idAlumno])}}'">Operacion</button>
-
-                                    @break
-                                        
-                                @endswitch
                                     
                                 
                             </td>
